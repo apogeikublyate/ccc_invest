@@ -1,0 +1,50 @@
+<!-- FILE: index.html -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <!-- Telegram WebApp Script -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>CCC Invest</title>
+    <script>
+      // --- ИЗМЕНЕННЫЙ СКРИПТ ---
+      // Скрипт для установки ЯВНОЙ темы до загрузки React
+      (function() {
+        try {
+          // Используем новый ключ для ПРЕДПОЧТЕНИЯ пользователя
+          const preference = localStorage.getItem('themePreference');
+          console.log('[Initial Theme Script] User preference:', preference);
+
+          // Применяем класс ТОЛЬКО если выбрано 'light' или 'dark' явно
+          if (preference === 'dark') {
+            document.documentElement.classList.add('dark');
+            console.log('[Initial Theme Script] Explicit dark preference found.');
+          } else if (preference === 'light') {
+            document.documentElement.classList.remove('dark');
+            console.log('[Initial Theme Script] Explicit light preference found.');
+          } else {
+            // Если 'system' или не установлено, НИЧЕГО не делаем здесь.
+            // React ThemeManager определит тему на основе tg.colorScheme.
+            // Можно оставить fallback на prefers-color-scheme, но он может быть неточным
+            // до инициализации TG. Лучше положиться на ThemeManager.
+             console.log('[Initial Theme Script] No explicit preference or "system". Deferring to ThemeManager.');
+             // Опциональный fallback (менее надежный):
+             // const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+             // if (prefersDark) document.documentElement.classList.add('dark');
+          }
+        } catch (e) {
+          console.error('[Initial Theme Script] Error setting initial theme:', e);
+        }
+      })();
+      // --- КОНЕЦ ИЗМЕНЕНИЙ ---
+    </script>
+    <script type="module" crossorigin src="./assets/index-CDPBqXRB.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BLogzQFr.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
