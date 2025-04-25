@@ -1,0 +1,40 @@
+<!-- FILE: index.html -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <!-- Telegram WebApp Script -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>CCC Invest</title>
+    <script>
+      // Скрипт для установки ЯВНОЙ темы до загрузки React
+      (function() {
+        try {
+          const preference = localStorage.getItem('themePreference');
+          // logger недоступен здесь, используем console
+          console.log('[Initial Theme Script] User preference:', preference);
+
+          if (preference === 'dark') {
+            document.documentElement.classList.add('dark');
+            console.log('[Initial Theme Script] Explicit dark preference found.');
+          } else if (preference === 'light') {
+            document.documentElement.classList.remove('dark');
+            console.log('[Initial Theme Script] Explicit light preference found.');
+          } else {
+             console.log('[Initial Theme Script] No explicit preference or "system". Deferring to ThemeManager.');
+          }
+        } catch (e) {
+          console.error('[Initial Theme Script] Error setting initial theme:', e);
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/index-DDR5Ej0M.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BpXH_rfe.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
